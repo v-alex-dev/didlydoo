@@ -1,4 +1,3 @@
-
 import { header } from "./layouts/header.js";
 import { getAllAttendees } from "./queries/get-all-attendees.js";
 
