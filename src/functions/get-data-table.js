@@ -1,11 +1,17 @@
+import { getAllAttendees } from "../queries/get-all-attendees.js";
 import { getAllEvent } from "../queries/get-all-event.js";
 
 export function getAllDataTable() {
-	const req = getAllEvent();
+	const reqEvent = getAllEvent();
+	const reqAttendees = getAllAttendees();
+
 	const table = [];
-	req.then(data => {
+	reqEvent.then(data => {
 		console.log(data);
 	});
+	reqAttendees.then(data => {
+		console.log(data);
+	})
 
 
 }
