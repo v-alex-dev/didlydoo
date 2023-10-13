@@ -1,7 +1,15 @@
+
+import { btnModalPatchevent } from "./components/btn-modal-patch-event.js";
 import { header } from "./layouts/header.js";
 import { getAllAttendees } from "./queries/get-all-attendees.js";
+import { getAllEvents } from "./queries/get-all-events.js";
 
 header();
-const attendees = getAllAttendees();
 
-attendees.then(data =>console.log(data))
+const event = getAllEvents();
+
+event.then(data => {
+	console.log(data[0].id);
+
+	btnModalPatchevent(data[0].id);
+})
