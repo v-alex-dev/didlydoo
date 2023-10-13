@@ -1,4 +1,4 @@
-import { btnAddEvent } from "../components/btn-add-event"
+import { btnAddEvent } from "../components/btn-add-event.js"
 
 export const header = () => {
 	
