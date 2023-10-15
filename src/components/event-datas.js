@@ -7,8 +7,7 @@ import { createTables } from "./attendees-table-injector.js";
 export async function displayEvents() {
   const eventDatas = await getAllEvent();
   const attendeesData = await getAllAttendees();
-  console.log(eventDatas);
-  console.log(attendeesData);
+  
 
   eventDatas.forEach((eventData) => {
     // create element
