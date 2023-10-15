@@ -1,42 +1,55 @@
-import { getAllAttendees } from "../queries/get-all-attendees.js";
+export async function createTables(eventData, attendeesData, container) {
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const tbody = document.createElement("tbody");
 
-export async function createTables(eventData, container) {
-    const table = document.createElement("table");
-    const thead = document.createElement("thead");
-    const tbody = document.createElement("tbody");
-  
-    // Headers
-    const headerRow = document.createElement("tr");
-    thead.appendChild(headerRow);
+  // Table header
+  const headerRow = document.createElement("tr");
+  thead.appendChild(headerRow);
 
-    const attendeesHeader = document.createElement("th");
-    attendeesHeader.textContent = "Attendees";
-    headerRow.appendChild(attendeesHeader);
+  const attendeesHeader = document.createElement("th");
+  attendeesHeader.textContent = "Attendees";
+  headerRow.appendChild(attendeesHeader);
 
-    for (let i = 0, length = eventData.dates.length; i < length; i++) {
-      const date = eventData.dates[i];
-      const dateHeader = document.createElement("th");
-      dateHeader.textContent = date;
-      headerRow.appendChild(dateHeader);
-    }
-  
-    // Body
-   
-  
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    container.appendChild(table);
+  for (let i = 0; i < eventData.dates.length; i++) {
+    const dateHeader = document.createElement("th");
+    dateHeader.textContent = eventData.dates[i].date;
+    headerRow.appendChild(dateHeader);
   }
+
+  // Table Body
+  const attendeesForEvent = attendeesData.filter((attendee) => {
+    return attendee.events.some((event) => event.id === eventData.id);
+  });
+
+
+  for (let i = 0; i < attendeesForEvent.length; i++) {
+    const attendeeData = attendeesForEvent[i];
+    const row = document.createElement("tr");
+
   
-  
-  
-  
-  
-  
+    const nameCell = document.createElement("td");
+    nameCell.textContent = attendeeData.name;
+    row.appendChild(nameCell);
+
+   
+    for (let j = 0; j < eventData.dates.length; j++) {
+      const event = attendeeData.events.find((event) => event.id === eventData.id);
+      const date = event.dates.find((d) => d.date === eventData.dates[j].date);
+
  
+      const cellContent = date ? (date.available ? 'V' : 'X') : 'X';
 
+      const dateCell = document.createElement("td");
+      dateCell.textContent = cellContent;
+      row.appendChild(dateCell);
+    }
 
+    tbody.appendChild(row);
+  }
 
-
-
-
+  // Put the table in it's container
+  table.appendChild(thead);
+  table.appendChild(tbody);
+  container.appendChild(table);
+}
