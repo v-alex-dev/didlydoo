@@ -37,14 +37,6 @@ export const btnAddEvent = () => {
     let formSend = document.createElement("form");
     let inputSend = document.createElement("button");
     inputSend.textContent = "Send";
-    inputSend.addEventListener("click", (e) => {
-      e.preventDefault();
-      let name = inputName.value;
-      let author = inputAuthor.value;
-      let desc = inputDesc.value;
-      let date = inputDate.value;
-      console.log(name, author, desc, date);
-    });
 
     modal.appendChild(formSend);
 
@@ -52,7 +44,7 @@ export const btnAddEvent = () => {
     formSend.appendChild(inputAuthorLabel);
     formSend.appendChild(inputDescLabel);
     modal.appendChild(inputDate);
-    formSend.appendChild(inputSend);
+    modal.appendChild(inputSend);
 
     inputDate.addEventListener("keyup", (c) => {
       if (c.key === "Enter") {
@@ -64,13 +56,24 @@ export const btnAddEvent = () => {
             inputDateLabel.appendChild(inputDate2);
             formSend.appendChild(inputDate2);
           }
-          // inputDate.remove();
+          inputDate.remove();
         }
-        inputName.value = "";
-        inputAuthor.value = "";
-        inputDesc.value = "";
-        inputDate.value = "";
       }
+    });
+    // event button send
+    inputSend.addEventListener("click", (e) => {
+      e.preventDefault();
+      let name = inputName.value;
+      let author = inputAuthor.value;
+      let desc = inputDesc.value;
+      let date = inputDate.value;
+      console.log(name, author, desc, date);
+      let dates = [];
+      for (let i = 0; i < date; i++) {
+        dates.push(formSend.elements[i + 4].value);
+      }
+      console.log(dates);
+      inputSend.parentNode.remove();
     });
   });
 };
