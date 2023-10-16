@@ -9,7 +9,7 @@ header();
 const event = getAllEvents();
 
 event.then(data => {
-	console.log(data[0].id);
+	console.log(data);
 
-	btnModalPatchevent(data[0].id);
+	btnModalPatchevent(data);
 })

@@ -1,4 +1,4 @@
-export const modalFormPatchEvent = (id) => {
+export const modalFormPatchEvent = (event) => {
 	// Init HTMLelement
 	const divModalForm = document.createElement('div');
 	const form = document.createElement('form');
@@ -11,9 +11,10 @@ export const modalFormPatchEvent = (id) => {
 	const inputDescription = document.createElement('textArea');
 	const btn = document.createElement('button');
 
+  console.log(event);
 	// Add attributes
 		// form
-		form.action = `http://localhost:3000/api/events/${id}/`;
+		form.action = `http://localhost:3000/api/events/${event.id}/`;
 		form.method = 'post';
 		
 		//label
