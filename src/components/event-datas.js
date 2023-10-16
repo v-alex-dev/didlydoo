@@ -2,6 +2,7 @@
 import { getAllEvents } from "../queries/get-all-events.js";
 import { getAllAttendees } from "../queries/get-all-attendees.js";
 import { createTables } from "./attendees-table-injector.js";
+import { btnModalPatchevent } from "./btn-modal-patch-event.js";
 
 // export + function
 export async function displayEvents() {
@@ -17,10 +18,11 @@ export async function displayEvents() {
     const eventDataDiv = document.createElement("div");
     const eventDataH2 = document.createElement("h2");
     const eventDataP = document.createElement("p");
-
+    const eventUpdate = btnModalPatchevent(eventData)
     // append child
     eventDataSection.appendChild(eventDataDiv);
     eventDataH2.textContent = eventData.author + eventData.name;
+    eventDataDiv.appendChild(eventUpdate);
     eventDataDiv.appendChild(eventDataH2);
     eventDataP.textContent = eventData.description;
     eventDataDiv.appendChild(eventDataP);

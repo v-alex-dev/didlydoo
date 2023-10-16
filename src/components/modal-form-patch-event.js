@@ -36,7 +36,6 @@ export const modalFormPatchEvent = (event) => {
 		inputDescription.name = 'description';
     inputDescription.setAttribute('rows', '5')
     const divDates = document.createElement('div')
-
     // for (let i = 0; i < event.dates.length; i++) {
     //   const inputDate = document.createElement('input');
     //   const labelDate = document.createElement('label');
