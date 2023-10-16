@@ -81,7 +81,7 @@ export const btnAddEvent = () => {
 function validValentin(inputDate) {
   let isValid = true;
   if (inputDate.value < 2 || inputDate.value > 12) {
-    console.log("Please enter a valid number between 2 and 12");
+    alert("Please enter a valid number between 2 and 12");
     isValid = false;
   }
   return isValid;
