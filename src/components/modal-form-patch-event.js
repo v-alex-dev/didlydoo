@@ -36,19 +36,19 @@ export const modalFormPatchEvent = (event) => {
 		inputDescription.name = 'description';
     inputDescription.setAttribute('rows', '5')
     const divDates = document.createElement('div')
-    console.log(event.dates);
-    for (let i = 0; i < event.dates.length; i++) {
-      const inputDate = document.createElement('input');
-      const labelDate = document.createElement('label');
-      labelDate.setAttribute('for','dates');
-      labelDate.textContent = 'date';
-      inputDate.type = 'date';
-      inputDate.name = 'dates'
-      inputDate.value = event.dates[i].date;
-      divDates.appendChild(labelDate);
-      divDates.appendChild(inputDate);
 
-    }
+    // for (let i = 0; i < event.dates.length; i++) {
+    //   const inputDate = document.createElement('input');
+    //   const labelDate = document.createElement('label');
+    //   labelDate.setAttribute('for','dates');
+    //   labelDate.textContent = 'date';
+    //   inputDate.type = 'date';
+    //   inputDate.name = 'dates'
+    //   inputDate.value = event.dates[i].date;
+    //   divDates.appendChild(labelDate);
+    //   divDates.appendChild(inputDate);
+
+    // }
 
 		//btn
 		btn.type = 'submit';
