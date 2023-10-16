@@ -1,7 +1,7 @@
 
 import { btnModalPatchevent } from "./components/btn-modal-patch-event.js";
 import { getAllAttendees } from "./queries/get-all-attendees.js";
-import { getAllEvent } from "./queries/get-all-event.js";
+import { getAllEvents } from "./queries/get-all-events.js";
 import { displayEvents } from "./components/event-datas.js";
 
 
