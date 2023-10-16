@@ -1,6 +1,3 @@
-// create a header with title (H1)
-// create a form > input (name + author + desc + input?(date)) + button(submit)
-
 export const btnAddEvent = () => {
   const head = document.createElement("header");
   document.body.appendChild(head);
@@ -14,10 +11,28 @@ export const btnAddEvent = () => {
   btnAdd.addEventListener("click", () => {
     let modal = document.createElement("div");
     head.appendChild(modal);
+    let inputNameLabel = document.createElement("label");
+    inputNameLabel.setAttribute("for", "name");
     let inputName = document.createElement("input");
+    inputName.setAttribute("name", "name");
+    inputName.setAttribute("type", "text");
+    inputNameLabel.appendChild(inputName);
+    let inputAuthorLabel = document.createElement("label");
+    inputAuthorLabel.setAttribute("for", "author");
     let inputAuthor = document.createElement("input");
+    inputAuthor.setAttribute("name", "author");
+    inputAuthor.setAttribute("type", "text");
+    inputAuthorLabel.appendChild(inputAuthor);
+    let inputDescLabel = document.createElement("label");
+    inputDescLabel.setAttribute("for", "description");
     let inputDesc = document.createElement("input");
+    inputDesc.setAttribute("name", "description");
+    inputDesc.setAttribute("type", "text");
+    inputDescLabel.appendChild(inputDesc);
+    // let inputDateLabel = document.createElement("label");
     let inputDate = document.createElement("input");
+    inputDate.setAttribute("type", "number");
+    // inputDateLabel.appendChild(inputDate);
     inputDate.setAttribute("type", "number");
     let formSend = document.createElement("form");
     let inputSend = document.createElement("button");
@@ -29,33 +44,42 @@ export const btnAddEvent = () => {
       let desc = inputDesc.value;
       let date = inputDate.value;
       console.log(name, author, desc, date);
-      inputName.value = "";
-      inputAuthor.value = "";
-      inputDesc.value = "";
-      inputDate.value = "";
     });
 
     modal.appendChild(formSend);
 
-    formSend.appendChild(inputName);
-    formSend.appendChild(inputAuthor);
-    formSend.appendChild(inputDesc);
-    formSend.appendChild(inputDate);
+    formSend.appendChild(inputNameLabel);
+    formSend.appendChild(inputAuthorLabel);
+    formSend.appendChild(inputDescLabel);
+    modal.appendChild(inputDate);
     formSend.appendChild(inputSend);
 
-    inputDate.addEventListener("keyup", (e) => {
-      if (e.key === "Enter") {
-        if (inputDate.value <= 12 && inputDate.value >= 2) {
+    inputDate.addEventListener("keyup", (c) => {
+      if (c.key === "Enter") {
+        if (validValentin(inputDate)) {
           for (let i = 0; i < inputDate.value; i++) {
+            let inputDateLabel = document.createElement("label");
             let inputDate2 = document.createElement("input");
             inputDate2.setAttribute("type", "date");
-            modal.appendChild(inputDate2);
+            inputDateLabel.appendChild(inputDate2);
+            formSend.appendChild(inputDate2);
           }
-          inputDate.remove();
-        } else {
-          console.log("Please enter a valid number between 2 and 12");
+          // inputDate.remove();
         }
+        inputName.value = "";
+        inputAuthor.value = "";
+        inputDesc.value = "";
+        inputDate.value = "";
       }
     });
   });
 };
+
+function validValentin(inputDate) {
+  let isValid = true;
+  if (inputDate.value < 2 || inputDate.value > 12) {
+    console.log("Please enter a valid number between 2 and 12");
+    isValid = false;
+  }
+  return isValid;
+}
