@@ -1,3 +1,6 @@
+import { validateEvent } from "./validation.js";
+import { sendData } from "../queries/senddata.js";
+
 export const btnAddEvent = () => {
   const head = document.createElement("header");
   document.body.appendChild(head);
@@ -64,15 +67,15 @@ export const btnAddEvent = () => {
     inputSend.addEventListener("click", (e) => {
       e.preventDefault();
       let name = inputName.value;
+      console.log(name);
       let author = inputAuthor.value;
       let description = inputDesc.value;
-      let date = inputDate.value;
-      console.log(name, author, description, date);
-      let dates = [];
-      for (let i = 0; i < date; i++) {
-        dates.push(formSend.elements[i + 4].value);
+      let numberDate = inputDate.value;
+      let form = formSend;
+      console.log(name, author, description, numberDate);
+      if (validateEvent(name, author, description)){
+        sendData(form);
       }
-      console.log(dates);
       inputSend.parentNode.remove();
     });
   });

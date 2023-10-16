@@ -1,8 +1,12 @@
-export async function sendData() {
+export async function sendData(form) {
   const formData = new FormData(form);
+  const dates = [];
+  formData.getAll("date").forEach((date) => {
+    dates.push(date);
+  });
   const data = {
     name: formData.get("name"),
-    dates: formData.get("dates"),
+    dates: dates,
     author: formData.get("author"),
     description: formData.get("description"),
   };

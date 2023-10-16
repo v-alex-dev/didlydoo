@@ -1,6 +1,6 @@
-export async function validateEvent() {
+export async function validateEvent(name, author,description) {
     let isValid = true;
-    const datee = document.querySelectorAll(".classDate")
+    
 
     if (name.length === 0) {
     isValid = false;
@@ -23,11 +23,7 @@ export async function validateEvent() {
         isValid = false;
         alert('Antoine filled the Valentrain a bit too much please empty it');
     }
-    for (let i=0; i<datee.length; i++){
-       if (!datee.value) {
-        alert('You must give a date')
-       }
-    }
+   
     
     return isValid;
 }
