@@ -65,9 +65,9 @@ export const btnAddEvent = () => {
       e.preventDefault();
       let name = inputName.value;
       let author = inputAuthor.value;
-      let desc = inputDesc.value;
+      let description = inputDesc.value;
       let date = inputDate.value;
-      console.log(name, author, desc, date);
+      console.log(name, author, description, date);
       let dates = [];
       for (let i = 0; i < date; i++) {
         dates.push(formSend.elements[i + 4].value);
