@@ -40,6 +40,45 @@
             "available": true
           }
         ]
+      },
+      {
+        "name": "qweewqe",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-22",
+            "available": false
+          }
+        ]
+      },
+      {
+        "name": "qweeqweqw",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "ewqeqqew",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": false
+          },
+          {
+            "date": "2022-03-22",
+            "available": true
+          }
+        ]
       }
     ],
     "created_at": "2021-11-15T00:00",

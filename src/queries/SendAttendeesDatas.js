@@ -1,12 +1,9 @@
 //
-export async function SendAttendees(eventData, form, dateObject) {
+export async function SendAttendees(eventData, form, dates) {
   let id = eventData.id;
   const formData = new FormData(form);
 
-  const dates = [];
-  formData.getAll("dateObject").forEach((dateObject) => {
-    dates.push(dateObject);
-  });
+  
 
   const data = {
     name: formData.get("name"),
@@ -14,7 +11,7 @@ export async function SendAttendees(eventData, form, dateObject) {
   };
 
   console.log(data);
-  fetch(`http://localhost:3000/api/events/api/events/${id}/attend`, {
+  fetch(`http://localhost:3000/api/events/${id}/attend`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

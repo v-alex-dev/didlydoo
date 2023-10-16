@@ -30,12 +30,11 @@ export function createForm(eventData, eventDataSection) {
     if (confirmation) {
       let available = true;
       let date = eventData.dates[i].date;
-      let dateObject = [];
-      dateObject.push({ date, available });
+      let dates = {date: date,
+      available: available,};
       trueButton.remove();
       falseButton.remove();
-      console.log(dateObject);
-      return dateObject;
+      return dates;
     }
   }
 
@@ -45,15 +44,15 @@ export function createForm(eventData, eventDataSection) {
     if (confirmation) {
       let available = false;
       let date = eventData.dates[i].date;
-      let dateObject = [];
-      dateObject.push({ date, available });
-
+      let dates = {date: date,
+      available: available,};
+     
       trueButton.remove();
       falseButton.remove();
-      console.log(dateObject);
-      return dateObject;
+      return dates;
     }
   }
+  const dates = [];
 
   // Loop to create and append the div containing True and False buttons three times
   for (let i = 0; i < eventData.dates.length; i++) {
@@ -66,25 +65,37 @@ export function createForm(eventData, eventDataSection) {
     falseButton.setAttribute("type", "button");
     falseButton.setAttribute("value", "False");
     falseButton.classList.add("false-button");
+  
 
     trueButton.addEventListener("click", () => {
-      handleTrueButtonClick(trueButton, falseButton, i);
+      let newDate = handleTrueButtonClick(trueButton, falseButton, i);
+      console.log(newDate);
+      dates.push(newDate);
+      console.log(dates);
     });
     falseButton.addEventListener("click", () => {
-      handleFalseButtonClick(trueButton, falseButton, i);
+      let newDate = handleFalseButtonClick(trueButton, falseButton, i);
+      dates.push(newDate);
     });
+    
     let var_div = document.createElement("div");
     var_div.classList.add("input_div");
     var_div.appendChild(trueButton);
     var_div.appendChild(falseButton);
     form.appendChild(var_div);
   }
+  
+
   let subBtn = document.createElement("button");
   subBtn.setAttribute("type", "submit");
   subBtn.textContent = "Submit";
-  subBtn.addEventListener("click", (e) => {
-    SendAttendees(eventData, form, dateObject);
-    e.preventDefault();
+  subBtn.addEventListener("click", () => {
+    if (nameInput.value === 0 || nameInput.value> 75) {
+      alert("name is required or must be shorter than 75 charachters!")
+    } else {
+      SendAttendees(eventData, form, dates);
+    }
+    
   });
 
   form.appendChild(subBtn);
