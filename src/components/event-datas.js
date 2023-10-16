@@ -1,11 +1,11 @@
 //import
-import { getAllEvent } from "../queries/get-all-event.js";
+import { getAllEvents } from "../queries/get-all-events.js";
 import { getAllAttendees } from "../queries/get-all-attendees.js";
 import { createTables } from "./attendees-table-injector.js";
 
 // export + function
 export async function displayEvents() {
-  const eventDatas = await getAllEvent();
+  const eventDatas = await getAllEvents();
   const attendeesData = await getAllAttendees();
   
 

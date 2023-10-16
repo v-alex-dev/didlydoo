@@ -1,13 +1,16 @@
-import { getAllAttendees } from "./queries/get-all-attendees.js";
-import { getAllEvent } from "./queries/get-all-event.js";
+import { btnModalPatchevent } from "./components/btn-modal-patch-event.js";
+// import { getAllAttendees } from "./queries/get-all-attendees.js";
+import { getAllEvents } from "./queries/get-all-events.js";
 import { displayEvents } from "./components/event-datas.js";
+import { btnAddEvent } from "./components/btn-add-event.js";
 
-const attendees = getAllAttendees();
+const event = getAllEvents();
 
-attendees.then(data =>console.log(data))
+event.then((data) => {
+  console.log(data[0].id);
 
-const events = getAllEvent();
-
-events.then(data =>console.log(data));
+  btnModalPatchevent(data[0].id);
+});
 
 displayEvents();
+btnAddEvent();
