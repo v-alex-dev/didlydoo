@@ -1,71 +1,103 @@
-// Function to create the dynamic form
-export function createForm() {
-    var formContainer = document.getElementById('form-container');
-    var form = document.createElement('form');
-    form.setAttribute('method', 'post'); // Set form method to POST
+import { SendAttendees } from "../queries/SendAttendeesDatas.js";
 
-    var formData = {
-        name: '',
-        dates: Array(5).fill(null).map(_ => ({ availables: false }))
-    };
+export function createForm(eventData, eventDataSection) {
+  let form = document.createElement("form");
 
-    // Input field for name
-    var nameLabel = document.createElement('label');
-    nameLabel.textContent = 'Name: ';
-    var nameInput = document.createElement('input');
-    nameInput.setAttribute('type', 'text');
-    nameInput.setAttribute('name', 'name');
-    nameInput.addEventListener('input', function(event) {
-        formData.name = event.target.value;
-    });
-    form.appendChild(nameLabel);
-    form.appendChild(nameInput);
-    form.appendChild(document.createElement('br'));
+  //   form.setAttribute("method", "post"); // Set form method to POST
 
-    // Loop to create and append the div containing True and False buttons five times
-    for (var i = 0; i < 5; i++) {
-        var trueButton = document.createElement('input');
-        trueButton.setAttribute('type', 'button');
-        trueButton.setAttribute('value', 'True');
-        trueButton.classList.add('true-button');
-        trueButton.addEventListener('click', function(index) {
-            return function(event) {
-                formData.dates[index].availables = true;
-            };
-        }(i));
+  //   let formData = {
+  //     name: "",
+  //     dates: Array()
+  //       .fill(null)
+  //       .map((_) => ({ availables: false })),
+  //   };
 
-        var falseButton = document.createElement('input');
-        falseButton.setAttribute('type', 'button');
-        falseButton.setAttribute('value', 'False');
-        falseButton.classList.add('false-button');
-        falseButton.addEventListener('click', function(index) {
-            return function(event) {
-                formData.dates[index].availables = false;
-            };
-        }(i));
+  // Input field for name
+  let nameLabel = document.createElement("label");
+  nameLabel.textContent = "Name: ";
+  let nameInput = document.createElement("input");
+  nameInput.setAttribute("type", "text");
+  nameInput.setAttribute("name", "name");
+  //   nameInput.addEventListener("input", function (e) {
+  //     formData.name = e.target.value;
+  //   });
+  form.appendChild(nameLabel);
+  form.appendChild(nameInput);
 
-        form.appendChild(document.createElement('br'));
-        var var_div = document.createElement('div');
-        var_div.classList.add("input_div");
-        var_div.appendChild(trueButton);
-        var_div.appendChild(falseButton);
-        form.appendChild(var_div);
-        form.appendChild(document.createElement('br'));
+  // Function to handle the true button click
+  function handleTrueButtonClick(trueButton, falseButton, i) {
+    let confirmation = confirm("Tu veux vraiment participer?");
+    if (confirmation) {
+      let available = true;
+      let date = eventData.dates[i].date;
+      let dates = {date: date,
+      available: available,};
+      trueButton.remove();
+      falseButton.remove();
+      return dates;
     }
+  }
 
-    // Submit button
-    var submitButton = document.createElement('input');
-    submitButton.setAttribute('type', 'submit');
-    submitButton.setAttribute('value', 'Submit');
-    submitButton.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent form from submitting the traditional way
-        console.log(formData);
+  // Function to handle the false button click
+  function handleFalseButtonClick(trueButton, falseButton, i) {
+    let confirmation = confirm("Tu n'aime vraiment pas cette personne ?");
+    if (confirmation) {
+      let available = false;
+      let date = eventData.dates[i].date;
+      let dates = {date: date,
+      available: available,};
+     
+      trueButton.remove();
+      falseButton.remove();
+      return dates;
+    }
+  }
+  const dates = [];
+
+  // Loop to create and append the div containing True and False buttons three times
+  for (let i = 0; i < eventData.dates.length; i++) {
+    let trueButton = document.createElement("input");
+    trueButton.setAttribute("type", "button");
+    trueButton.setAttribute("value", "True");
+    trueButton.classList.add("true-button");
+
+    let falseButton = document.createElement("input");
+    falseButton.setAttribute("type", "button");
+    falseButton.setAttribute("value", "False");
+    falseButton.classList.add("false-button");
+  
+
+    trueButton.addEventListener("click", () => {
+      let newDate = handleTrueButtonClick(trueButton, falseButton, i);
+      console.log(newDate);
+      dates.push(newDate);
+      console.log(dates);
     });
-    form.appendChild(submitButton);
+    falseButton.addEventListener("click", () => {
+      let newDate = handleFalseButtonClick(trueButton, falseButton, i);
+      dates.push(newDate);
+    });
+    
+    let var_div = document.createElement("div");
+    var_div.classList.add("input_div");
+    var_div.appendChild(trueButton);
+    var_div.appendChild(falseButton);
+    form.appendChild(var_div);
+  }
+  
 
-    // Append form to the container
-    formContainer.appendChild(form);
+  let subBtn = document.createElement("button");
+  subBtn.setAttribute("type", "submit");
+  subBtn.textContent = "Submit";
+  subBtn.addEventListener("click", () => {
+    if (nameInput.value === 0 || nameInput.value> 75) {
+      alert("name is required or must be shorter than 75 charachters!")
+    } else {
+      SendAttendees(eventData, form, dates);
+    }
+    
+  });
+
+  form.appendChild(subBtn);
+  eventDataSection.appendChild(form);
 }
-        
-
-
