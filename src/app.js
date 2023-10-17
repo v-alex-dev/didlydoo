@@ -1,4 +1,6 @@
-import { header } from "./layouts/header";
 
-header();
-main();
+import { createForm } from "./components/PostInput.js";
+
+
+createForm();
+
