@@ -2,6 +2,7 @@ import { SendAttendees } from "../queries/SendAttendeesDatas.js";
 
 export function createForm(eventData, eventDataSection) {
   let form = document.createElement("form");
+  form.classList.add('form-attendees')
 
   //   form.setAttribute("method", "post"); // Set form method to POST
 

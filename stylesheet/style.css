@@ -114,6 +114,19 @@ section {
   flex-direction: column;
   align-content: center;
 }
+.section-data .form-attendees {
+  display: flex;
+  flex-direction: row;
+  max-height: 5em;
+  align-items: center;
+  justify-content: center;
+}
+.section-data .form-attendees input {
+  padding: 0;
+}
+.section-data .form-attendees .input_div {
+  display: flex;
+}
 
 table {
   border: 2px solid lightgray;
