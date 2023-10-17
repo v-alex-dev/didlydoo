@@ -3,7 +3,9 @@ button{
   background-color: none;
   border-radius: 0.5em;
   padding: 0.5em 1em;
+  font-family: 'kanit', sans-serif;
 
+  background-color: #D4ADFC;
 
 }
 .btn{
@@ -14,7 +16,13 @@ button{
 
   &-edit{
     margin-top: 2em;
-    width: 40%;
+    width: 60%;
+  }
+
+  
+  &-post{
+    margin-top: 3em;
+    width: 60%;
   }
 
 }

@@ -1,6 +1,9 @@
+import { closeModalOnClickOutside } from "../functions/close-modal-onclick-outside.js";
+
 export const modalFormPatchEvent = (event) => {
 	// Init HTMLelement
-	const divModalForm = document.createElement('div');
+	const divModal = document.createElement('div');
+  const divModalForm = document.createElement('div');
 	const form = document.createElement('form');
 
 	const labelName = document.createElement('label');
@@ -14,7 +17,8 @@ export const modalFormPatchEvent = (event) => {
   
 	// Add attributes
     //div-modal
-    divModalForm.classList.add('modal');
+    divModal.classList.add('modal');
+    divModalForm.classList.add('modal-form')
 		// form
     form.id = event.author;
 		//label
@@ -53,6 +57,7 @@ export const modalFormPatchEvent = (event) => {
 		btn.type = 'submit';
     btn.classList.add('btn-edit')
     btn.textContent = 'Modifiy';
+
 	// AppendChild
 	form.appendChild(labelName);
 	form.appendChild(inputName);
@@ -62,8 +67,9 @@ export const modalFormPatchEvent = (event) => {
 	form.appendChild(divDates);
 	form.appendChild(btn);
 
-	divModalForm.appendChild(form)
-  
+	divModalForm.appendChild(form);
+
+  divModal.appendChild(divModalForm);
 	
 	btn.addEventListener('click', (e) => {
 
@@ -96,5 +102,8 @@ export const modalFormPatchEvent = (event) => {
         });
     }
   })
-	return divModalForm;
+
+
+  closeModalOnClickOutside(divModal)
+	return divModal;
 }

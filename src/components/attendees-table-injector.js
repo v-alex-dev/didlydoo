@@ -37,11 +37,12 @@ export async function createTables(eventData, attendeesData, container) {
       const event = attendeeData.events.find((event) => event.id === eventData.id);
       const date = event.dates.find((d) => d.date === eventData.dates[j].date);
 
- 
-      const cellContent = date ? (date.available ? 'V' : 'X') : 'X';
-
+      const classV = 'here'
+      const classX = 'not-here'
+      
       const dateCell = document.createElement("td");
-      dateCell.textContent = cellContent;
+      date ? (date.available ? dateCell.classList.add(classV) : dateCell.classList.add(classX)) : dateCell.classList.add(classX);
+      
       row.appendChild(dateCell);
     }
 

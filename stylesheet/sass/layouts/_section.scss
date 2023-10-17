@@ -21,5 +21,12 @@ section{
   p{
     margin: 0 auto;
     margin-top: 2em;
+    min-width: 100%;
   }
+}
+
+.section-data{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }

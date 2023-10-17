@@ -2,7 +2,11 @@ input {
   border-radius: 1em;
   border: none;
   padding: 1em;
+  margin: 0 1em;
   margin-top: 1.5em;
+  font-family: 'kanit', sans-serif;
+
+  max-width: 15em;
 }
 
 textarea {
@@ -10,4 +14,5 @@ textarea {
   border:none;
   padding: 1em;
   margin-top: 1.5em;
+  font-family: 'kanit', sans-serif;
 }
