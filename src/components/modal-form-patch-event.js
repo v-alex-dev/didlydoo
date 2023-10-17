@@ -13,13 +13,13 @@ export const modalFormPatchEvent = (event) => {
 
   
 	// Add attributes
+    //div-modal
+    divModalForm.classList.add('modal');
 		// form
+    form.id = event.author;
 		//label
 		labelName.setAttribute('for', 'name');
-		labelName.textContent = 'name';
-
 		labelAuthor.setAttribute('for', 'author');
-		labelAuthor.textContent = 'author';
 
 		labelDescription.setAttribute('for', 'description');
 		labelDescription.textContent= 'description';
@@ -51,6 +51,7 @@ export const modalFormPatchEvent = (event) => {
 
 		//btn
 		btn.type = 'submit';
+    btn.classList.add('btn-edit')
     btn.textContent = 'Modifiy';
 	// AppendChild
 	form.appendChild(labelName);
@@ -81,7 +82,11 @@ export const modalFormPatchEvent = (event) => {
         },
         body: JSON.stringify(eventPatch),
       })
-        .then(response => response.json())
+        .then(response => {
+          if(response.status === 200){
+            response.json()
+          }
+        })
         .then(data => {
           // Traitez la réponse de l'API ici
           console.log(data);

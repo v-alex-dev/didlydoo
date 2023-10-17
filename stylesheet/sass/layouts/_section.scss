@@ -1,0 +1,25 @@
+section{
+  margin: 0 auto;
+  margin-top: 3em;
+
+  padding: 1em;
+  width: 60%;
+  background: #5C469C;
+  border-radius: 2em;
+  text-align: center;
+
+  box-shadow: 0 0 10px lightgray;
+
+}
+
+.section-header{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  p{
+    margin: 0 auto;
+    margin-top: 2em;
+  }
+}
