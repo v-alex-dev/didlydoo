@@ -31,7 +31,6 @@ export const btnAddEvent = () => {
     inputDescLabel.appendChild(inputDesc);
     let inputDate = document.createElement("input");
     inputDate.setAttribute("type", "number");
-    inputDate.setAttribute("type", "number");
     let formSend = document.createElement("form");
     let inputSend = document.createElement("button");
     inputSend.textContent = "Send";
