@@ -3,12 +3,12 @@ import { getAllEvents } from "../queries/get-all-events.js";
 import { getAllAttendees } from "../queries/get-all-attendees.js";
 import { createTables } from "./attendees-table-injector.js";
 import { btnModalPatchevent } from "./btn-modal-patch-event.js";
+import { createForm } from "./PostInput.js";
 
 // export + function
 export async function displayEvents() {
   const eventDatas = await getAllEvents();
   const attendeesData = await getAllAttendees();
-  
 
   eventDatas.forEach((eventData) => {
     // create element
@@ -18,7 +18,7 @@ export async function displayEvents() {
     const eventDataDiv = document.createElement("div");
     const eventDataH2 = document.createElement("h2");
     const eventDataP = document.createElement("p");
-    const eventUpdate = btnModalPatchevent(eventData)
+    const eventUpdate = btnModalPatchevent(eventData);
     // append child
     eventDataSection.appendChild(eventDataDiv);
     eventDataH2.textContent = eventData.author + eventData.name;
@@ -28,5 +28,6 @@ export async function displayEvents() {
     eventDataDiv.appendChild(eventDataP);
 
     createTables(eventData, attendeesData, eventDataSection);
+    createForm(eventData, eventDataSection);
   });
 }
