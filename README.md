@@ -28,7 +28,6 @@ Introducing Didlydoo, the event planner! A tool to plan events with friends and 
 
 - Improvements to be made on the style
 
-- add a delete button
 
 - add a patch dates button
 
