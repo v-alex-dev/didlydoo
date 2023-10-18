@@ -90,7 +90,7 @@ section {
   margin: 0 auto;
   margin-top: 3em;
   padding: 1em;
-  width: 60%;
+  width: 85%;
   background: #5C469C;
   border-radius: 2em;
   text-align: center;
@@ -112,25 +112,71 @@ section {
 .section-data {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 .section-data .form-attendees {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   max-height: 5em;
   align-items: center;
   justify-content: center;
+  width: 80%;
+  margin-top: 10px;
+  gap: 10px;
 }
-.section-data .form-attendees input {
+.section-data .form-attendees .form-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.section-data .form-attendees .form-container .inputNameAttendee {
+  width: 120px;
+}
+.section-data .form-attendees .form-container input {
+  margin: 0;
+  margin-top: 0;
   padding: 0;
 }
-.section-data .form-attendees .input_div {
+.section-data .form-attendees .form-container .true-button {
+  background-color: #008170;
+  width: 15px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.section-data .form-attendees .form-container .true-button:hover {
+  box-shadow: 0 0 10px lightgray;
+  transition-duration: 1500ms;
+}
+.section-data .form-attendees .form-container .false-button {
+  background-color: #CD1818;
+  width: 15px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.section-data .form-attendees .form-container .false-button:hover {
+  box-shadow: 0 0 10px lightgray;
+  transition-duration: 1500ms;
+}
+.section-data .form-attendees .form-container .input_div {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-right: 50px;
+}
+.section-data .form-attendees .form-container .input_div button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 table {
   border: 2px solid lightgray;
   margin-top: 2em;
+  width: 80%;
 }
 table tr {
   border: 2px solid lightgray;
@@ -158,6 +204,7 @@ button {
   border-radius: 0.5em;
   padding: 0.5em 1em;
   font-family: "kanit", sans-serif;
+  cursor: pointer;
   background-color: #D4ADFC;
 }
 
@@ -212,13 +259,14 @@ textarea {
   background-color: #5C469C;
   padding: 3em;
   border-radius: 3em;
+  max-height: 80%;
 }
 .modal-form form {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
   align-content: center;
-  max-width: 60%;
+  max-width: 100%;
+  overflow-y: scroll;
 }/*# sourceMappingURL=style.css.map */

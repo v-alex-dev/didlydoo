@@ -18,15 +18,17 @@
     background-color: #5C469C;
     padding: 3em;
     border-radius: 3em;
+    max-height: 80%;
 
     form{
       display: flex;
-      flex-wrap: wrap;
+    
       align-items: center;
       flex-direction: column;
       justify-content: flex-start;
       align-content: center;
-      max-width: 60%; 
+      max-width: 100%; 
+      overflow-y: scroll;
     }
 
   }

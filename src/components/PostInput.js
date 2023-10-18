@@ -3,6 +3,8 @@ import { SendAttendees } from "../queries/SendAttendeesDatas.js";
 export function createForm(eventData, eventDataSection) {
   let form = document.createElement("form");
   form.classList.add('form-attendees')
+  let formContainer = document.createElement("div");
+  formContainer.classList.add("form-container");
 
   //   form.setAttribute("method", "post"); // Set form method to POST
 
@@ -14,16 +16,15 @@ export function createForm(eventData, eventDataSection) {
   //   };
 
   // Input field for name
-  let nameLabel = document.createElement("label");
-  nameLabel.textContent = "Name: ";
   let nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("name", "name");
+  nameInput.setAttribute("placeholder", "New Attendee")
+  nameInput.classList.add("inputNameAttendee")
   //   nameInput.addEventListener("input", function (e) {
   //     formData.name = e.target.value;
   //   });
-  form.appendChild(nameLabel);
-  form.appendChild(nameInput);
+  formContainer.appendChild(nameInput);
 
   // Function to handle the true button click
   function handleTrueButtonClick(trueButton, falseButton, i) {
@@ -59,12 +60,12 @@ export function createForm(eventData, eventDataSection) {
   for (let i = 0; i < eventData.dates.length; i++) {
     let trueButton = document.createElement("input");
     trueButton.setAttribute("type", "button");
-    trueButton.setAttribute("value", "True");
+    trueButton.setAttribute("value", "v");
     trueButton.classList.add("true-button");
 
     let falseButton = document.createElement("input");
     falseButton.setAttribute("type", "button");
-    falseButton.setAttribute("value", "False");
+    falseButton.setAttribute("value", "x");
     falseButton.classList.add("false-button");
   
 
@@ -83,12 +84,13 @@ export function createForm(eventData, eventDataSection) {
     var_div.classList.add("input_div");
     var_div.appendChild(trueButton);
     var_div.appendChild(falseButton);
-    form.appendChild(var_div);
+    formContainer.appendChild(var_div);
   }
   
 
   let subBtn = document.createElement("button");
   subBtn.setAttribute("type", "submit");
+  subBtn.classList.add("btnAttendees")
   subBtn.textContent = "Submit";
   subBtn.addEventListener("click", () => {
     if (nameInput.value === 0 || nameInput.value> 75) {
@@ -98,7 +100,7 @@ export function createForm(eventData, eventDataSection) {
     }
     
   });
-
+  form.appendChild(formContainer);
   form.appendChild(subBtn);
   eventDataSection.appendChild(form);
 }

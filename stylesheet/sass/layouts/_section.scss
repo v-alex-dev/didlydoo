@@ -3,7 +3,7 @@ section{
   margin-top: 3em;
 
   padding: 1em;
-  width: 60%;
+  width: 85%;
   background: #5C469C;
   border-radius: 2em;
   text-align: center;
@@ -28,18 +28,67 @@ section{
 .section-data{
   display: flex;
   flex-direction: column;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   .form-attendees{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     max-height: 5em;
     align-items: center;
     justify-content: center;
-    input{
-      padding: 0;
-    }
-    .input_div{
+    width: 80%;
+    margin-top: 10px;
+    gap: 10px;
+    .form-container{
       display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      .inputNameAttendee{
+        width: 120px;
+      }
+
+      input {
+        margin: 0;
+        margin-top: 0;
+        padding: 0;
+      }
+
+      .true-button{
+        background-color: #008170;
+        width: 15px;
+        border-radius: 100%;
+        cursor: pointer;
+        &:hover{
+          box-shadow: 0 0 10px lightgray;
+          transition-duration: 1500ms;
+        }
+      }
+
+      .false-button{
+        background-color: #CD1818;
+        width: 15px;
+        border-radius: 100%;
+        cursor: pointer;
+        &:hover{
+          box-shadow: 0 0 10px lightgray;
+          transition-duration: 1500ms;
+        }
+      }
+      .input_div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-right: 50px;
+        
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+      }
     }
   }
 }
