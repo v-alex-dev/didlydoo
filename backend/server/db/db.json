@@ -1,5 +1,21 @@
 [
   {
+    "id": "dc07d75880d8",
+    "name": "pool party",
+    "author": "Dj Paul",
+    "description": "at the beach",
+    "dates": [],
+    "created_at": "2023-10-18T06:50:08.555Z",
+    "num_modification": 0,
+    "last_modification": "2023-10-18T06:50:08.555Z",
+    "attendees": [
+      {
+        "name": "okly",
+        "dates": []
+      }
+    ]
+  },
+  {
     "id": "f5b6564b5dc4",
     "name": "My sweet 10",
     "description": "I am going to be 16, let us all party together! Help me pick a date so we can go together",
@@ -69,6 +85,27 @@
           {
             "date": "2022-03-17",
             "available": true
+          },
+          {
+            "date": "2022-03-21",
+            "available": false
+          },
+          {
+            "date": "2022-03-22",
+            "available": true
+          }
+        ]
+      },
+      {
+        "name": "alex",
+        "dates": [
+          {
+            "date": "2022-03-17",
+            "available": true
+          },
+          {
+            "date": "2022-03-18",
+            "available": false
           },
           {
             "date": "2022-03-21",
